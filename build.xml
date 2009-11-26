@@ -15,7 +15,7 @@
 	If you have any questions about this build, feel free to contact me
 	at patrick@rcpquickstart.com.
 -->
-<project name="com.idega.app.eplatform.mac" default="build">
+<project name="com.idega.app.eplatform.win32" default="build">
 	<property file="build.properties" />
 	
 
