@@ -75,33 +75,14 @@
 	
 	<target name="build-platform" depends="pde-build">
 
-		<unzip src="${buildDirectory}/${buildId}/${buildId}-macosx.cocoa.x86.zip"
+		<unzip src="${buildDirectory}/${buildId}/${buildId}-win32.win32.x86.zip"
 		       dest="${buildDirectory}/${buildId}/${buildId}">
 		</unzip>
 		
-		  <!--copy file="${idegaWarLocation}" todir="${buildDirectory}/${buildId}/${buildId}/${buildId}/"/-->
-		  <!--copy file="${appserverLocation}" todir="${buildDirectory}/${buildId}/${buildId}/${buildId}/"/-->
-		<exec executable="${basedir}/bin/EclipseOSXRepackager">
-		    <arg value="${buildDirectory}/${buildId}/${buildId}/${buildId}"/>
-		    <arg value="${buildDirectory}"/>
-		  </exec>
-		  <!--move todir="${buildDirectory}/${buildId}.app">
-		  	<fileset dir="${buildDirectory}/${buildId} 3.5.app"/>
-		  </move-->
-			<exec command="mv">
-			    <arg value="${buildDirectory}/${buildId} 3.5.app"/>
-			    <arg value="${buildDirectory}/${buildId}.app"/>
-			</exec>
-		<exec command="chmod">
-		    <arg value="+x"/>
-		    <arg value="${buildDirectory}/${buildId}.app/Contents/MacOS/idega"/>
-		</exec>
-		  <copy file="${idegaWarLocation}" todir="${buildDirectory}/${buildId}.app/Contents/Resources/Java/"/>
-		  <copy file="${appserverLocation}" todir="${buildDirectory}/${buildId}.app/Contents/Resources/Java/"/>
-		
-		  <exec command="${basedir}/bin/dmgbuilder">
-		  	<arg value="src/conf/idega-dmg.xml"/>
-		  </exec>
+		<copy file="${idegaWarLocation}" todir="${buildDirectory}/${buildId}/${buildId}/${buildId}/"/>
+		<copy file="${appserverLocation}" todir="${buildDirectory}/${buildId}/${buildId}/${buildId}/"/>
+
+		<zip basedir="${buildDirectory}/${buildId}/${buildId}/${buildId}/" destfile="${buildDirectory}/${buildId}.zip" /> 
 	</target>
 	
 		
